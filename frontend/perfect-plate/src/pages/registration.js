@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from "./page.module.css";
+import styles from "../app/page.module.css";
 
 // SKELETON CODE
 
-export default function Home() {
+export default function Registration() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -17,31 +17,23 @@ export default function Home() {
     return (
     <div className="container">
         <body>
-            <NavBar />
             <main>
 
             <div id="registration">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={console.log('hi')}>
                 <h1>Create an account</h1>
                 <h2>* - indicates a required field</h2>
                 <h2>* First Name</h2>
                 <input className="fields" type="text" placeholder="Enter your first name" onChange={(val) => setFirstName(val.target.value)}></input>
                 <h2>* Last Name</h2>
                 <input className="fields" type="text" placeholder="Enter your last name" onChange={(val) => setLastName(val.target.value)}></input>
-                <h2>* Phone number</h2>
-                <input onInput={onlyNumbers} className="fields" type="text" placeholder="Enter your phone number" onChange={(val) => setPhone(val.target.value)}></input>
                 <h2>* Email Address</h2>
                 <input className="fields" type="text" placeholder="Enter your email address" onChange={(val) => setEmail(val.target.value)}></input>
                 <h2>* Password</h2>
                 <input className="fields" type="password" placeholder="Enter a password" onChange={(val) => setPassword(val.target.value)}></input>
                 <h2>* Confirm Password</h2>
                 <input className="fields" type="password" placeholder="Re-enter the password" onChange={(val) => setConfirmPassword(val.target.value)}></input>
-
-                <h2>Subscribe to Promotions</h2>
-                <label class="checkContainer">
-                    <input type="checkbox" onChange={handleCheckbox} />
-                    <span class="checkmark"></span>
-                </label>
+                
                 <br/><br/><br/>
                 <button type="submit" id="sign-in-button">Create your account</button>
                 </form>

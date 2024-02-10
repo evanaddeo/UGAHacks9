@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import styles from "./page.module.css";
+import styles from "../app/page.module.css";
 
 
-// SKELETON CODE
-
-export default function Home() {
+export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [incorrectMessage, setIncorrectMessage] = useState("");
@@ -31,11 +29,10 @@ export default function Home() {
     return (
         <div className="container">
         <body>
-            <NavBar />
             <main>
 
             <div id="login">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={console.log('hi')}>
 
                 <h1>Sign in to PlatePerfect</h1>
                 <h3 id="incorrect-credentials" style={{ color: 'red' }}>{incorrectMessage}</h3>

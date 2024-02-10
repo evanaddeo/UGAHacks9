@@ -1,7 +1,9 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "../app/page.module.css";
 import PPLogo from '../../images/PP_logo2.png';
 import ProfilePic from '../../images/profile.png';
+import Link from 'next/link';
+import "../app/globals.css";
 
 export default function Home() {
   return (
@@ -15,7 +17,10 @@ export default function Home() {
           <li><a href="#about">About</a></li>
           <li><a href="#weekly-glance">Weekly Glance</a></li>
           <li><a href="#recap">Recap</a></li>
-          <Image className={styles.prof} src={ProfilePic} alt="Profile Logo" />
+          <Link href="/login">
+            <Image className={styles.prof} src={ProfilePic} alt="Profile Logo" />
+          </Link>
+
         </ul>
         
       </nav>
