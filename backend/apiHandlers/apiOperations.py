@@ -18,12 +18,15 @@ def get_recipe_details(recipe_id):
 # Include "breakfast", "lunch", or "dinner" as input
 #
 # Returns 30 options for that particular kind of meal
-def get_meal_recipes(meal_type):
+#
+# intolerances : Listed as "None" || "Peanut" || "Peanut,Seafood" ... etc
+def get_meal_recipes(meal_type, intolerances):
     url = "https://api.spoonacular.com/recipes/complexSearch"
     params = {
         "apiKey": "a581f0a1ab1043379b3c2bc3a853d918",
         "type": meal_type,
         "number": 30,
+        "intolerances": intolerances,
         "instructionsRequired": True
     }
     response = requests.get(url, params=params)

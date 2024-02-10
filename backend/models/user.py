@@ -8,6 +8,7 @@ class User(db.Model):
     lastname = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
+    intolerances = db.Column(db.String(255), nullable=False)
 
     def __repr__(self):
         return f'<User {self.firstname} {self.lastname}>'
@@ -19,5 +20,6 @@ class User(db.Model):
             'firstname': self.firstname,
             'lastname': self.lastname,
             'email': self.email,
-            'password': self.password
+            'password': self.password,
+            'intolerances': self.intolerances
         }

@@ -41,7 +41,8 @@ def add_user():
         firstname=data['firstname'],
         lastname=data['lastname'],
         email=data['email'],
-        password=data['password']
+        password=data['password'],
+        intolerances=data['intolerances']
     )
 
     db.session.add(new_user)
@@ -54,11 +55,12 @@ def add_user():
 #
 # Returns JSON containing id, title, and image link for the meals
 # Hold onto the meal_id and utilize get_meal_info for nutrition, ingredients, etc, when called upon
-@app.route('/get_recipes_by_mealtype/<string:meal_type>')
-def meal_recipes(meal_type):
+@app.route('/get_recipes_by_mealtype/<string:meal_type>/<string:intolerances>')
+def meal_recipes(meal_type, intolerances):
     # Returns 30 breakfast, lunch, or dinner options
-    result = get_meal_recipes(meal_type)
+    result = get_meal_recipes(meal_type, intolerances)
     return jsonify(result)
+
 
 # Returns nutrition information for the provided recipe_id
 @app.route('/get_meal_info/<string:recipe_id>')
