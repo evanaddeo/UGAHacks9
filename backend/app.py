@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from models import db
 from models.user import User
@@ -6,6 +7,7 @@ from apiHandlers.apiOperations import get_recipe_details, get_meal_recipes
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Setup db info 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://devs:dev_pass@localhost/hacksproject'
