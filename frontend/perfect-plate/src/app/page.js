@@ -38,16 +38,59 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={styles.weeklySection}>
+        <div className={styles.daySection}>
+          <h4>Sunday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection}>
+          <h4>Monday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection}>
+          <h4>Tuesday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection}>
+          <h4>Wednesday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection}>
+          <h4>Thursday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection}>
+          <h4>Friday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+        <div className={styles.daySection} style={{borderRight: "none"}}>
+          <h4>Saturday</h4>
+          <hr></hr>
+          <p>Breakfast</p>
+          <p>Lunch</p>
+          <p>Dinner</p>
+        </div>
+  {/* Repeat the above daySection div for each day of the week */}
       </div>
+
 
       <div className={styles.grid}>
         <a

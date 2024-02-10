@@ -284,3 +284,31 @@
   background-color: #555;
 }
 
+.weeklySection {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 80px; /* Adjust the margin as needed */
+  width: 80%;
+  background-color: rgba(200, 190, 190, 0.765);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.daySection {
+  background-color: transparent; /* Adjust the background color as needed */
+  padding: 20px;
+  text-align: center;
+  width: 14.2857%; 
+  border-right: 1px solid gray;
+}
+
+/* Additional styles for better spacing and appearance */
+.weeklySection h4 {
+  margin-bottom: 10px;
+}
+
+.weeklySection p {
+  margin: 5px 0;
+}
+
+
