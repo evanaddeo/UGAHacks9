@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import db
 from models.user import User
+from models.recipe import Recipe
 
 app = Flask(__name__)
 
