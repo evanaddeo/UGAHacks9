@@ -5,7 +5,7 @@ import requests
 # extendedIngredients : a list that contains all the ingredients req by recipe
 # analyzedInstructions : a list that contains cooking instructions
 # nutrition : an object that contains detailed nutrition info ab recipe
-def get_recipe_details(recipe_id, intolerances):
+def get_recipe_details(recipe_id):
     url = "https://api.spoonacular.com/recipes/{}/information".format(recipe_id)
     params = {
         "apiKey": "a581f0a1ab1043379b3c2bc3a853d918",
