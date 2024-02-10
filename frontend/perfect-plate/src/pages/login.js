@@ -1,69 +1,70 @@
+import React, { useState } from 'react';
+import styles from '../app/login.css'; 
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react';
-import styles from "../app/page.module.css";
-
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [incorrectMessage, setIncorrectMessage] = useState("");
-    const [rememberMe, setRememberMe] = useState(0);
-    const router = useRouter();
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [incorrectMessage, setIncorrectMessage] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    useEffect(() => {
-        if (typeof window !== "undefined" && localStorage.getItem("rememberMe") == "true") {
-        setEmail(localStorage.getItem("email"));
-        setPassword(localStorage.getItem("password"));
-        setRememberMe(1);
-        }
-    }, []);
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/users');
+      const data = await response.json();
 
-    let handleCheckbox = async (e) => {
-        if (rememberMe == 0) {
-        setRememberMe(1);
-        } else {
-        setRememberMe(0);
-        }
-    };
-    return (
-        <div className="container">
-        <body>
-            <main>
+      const matchingUser = data.users.find(user => user.email === email && user.password === password);
 
-            <div id="login">
-                <form onSubmit={console.log('hi')}>
+      if (matchingUser) {
+        console.log('Login successful:', matchingUser);
+        setIncorrectMessage('');
+        router.push('/page');
+      } else {
+        setIncorrectMessage('Incorrect email or password');
+      }
+    } catch (error) {
+      console.error('Error fetching or processing users:', error);
+    }
+  };
 
-                <h1>Sign in to PlatePerfect</h1>
-                <h3 id="incorrect-credentials" style={{ color: 'red' }}>{incorrectMessage}</h3>
-
-                <label for="email" className="field-label"><h3>Email</h3></label>
-                <a><input type="text" className="fields" name="email" placeholder="johndoe@email.com" onChange={(val) => setEmail(val.target.value)} defaultValue={email}></input></a><br />
-                <label for="password" className="field-label"><h3>Password</h3></label>
-                <a><input type="password" className="fields" name="password" placeholder="Enter your password" onChange={(val) => setPassword(val.target.value)} defaultValue={password}></input></a><br />
-                <div id="remember-me-div">
-                    <input name="remember-me" type="checkbox" onChange={handleCheckbox} checked={rememberMe} />
-                    <label htmlFor="remember-me">Remember Me</label>
-                    <p id="forgotpassword"><a href="/forgot-password">Forgot your password?</a></p>
-                </div>
-                <button type="submit" id="sign-in-button">Sign-In</button>
-                </form>
-                <p id="or">OR</p>
-
-            </div>
-
-            <div id="footer">
-            <a href="/registration" id="create-account-button"><p>Create an Account</p></a>
-            </div>
-            </main>
-
-        </body>
-
-        <footer>
-
-        </footer>
-
-
+  return (
+    <div className="container">
+      <h1>Login to PlatePerfect</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-    )
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <p style={{color: "rgb(158, 34, 34)", marginLeft: "30px;"}}>{incorrectMessage}</p>
+        <button type="submit" onClick={handleSubmit}>Login</button>
+      </form>
+      <div className="register-link">
+        <p>
+          Don't have an account?{' '}
+          <a href="/registration">Register here</a>
+        </p>
+      </div>
+    </div>
+  );
 }
