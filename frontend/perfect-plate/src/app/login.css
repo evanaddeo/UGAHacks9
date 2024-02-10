@@ -10,8 +10,14 @@ body {
   
   .container {
     background-color: #a39d9da4;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     height: 380px;

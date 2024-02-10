@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../app/login.css'; 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import NavBar from '@/components/NavBar';
 
 export default function Login() {
   const router = useRouter();
@@ -31,6 +32,10 @@ export default function Login() {
   };
 
   return (
+    <div>
+      <div>
+      <NavBar />
+      </div>
     <div className="container">
       <h1>Login to PlatePerfect</h1>
       <form onSubmit={handleSubmit}>
@@ -65,6 +70,7 @@ export default function Login() {
           <a href="/registration">Register here</a>
         </p>
       </div>
+    </div>
     </div>
   );
 }
