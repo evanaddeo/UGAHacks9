@@ -2,22 +2,32 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import db
 from models.user import User
-from models.recipe import Recipe
+
 
 app = Flask(__name__)
 
 # Setup db info 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://devs:dev_pass@localhost/hacksproject'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://devs:dev_pass@localhost/hacksproject'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize alchemy tool
-db = SQLAlchemy(app)
+# Initialize db & flask app
+db.init_app(app)
 
 @app.route('/')
 def hello_world():
+    with app.app_context():
+        # Create a new user
+        new_user = User(firstname='Evan', lastname='Addeo', email='evanaddeo@gmail.com', password='1243Evan')
+        db.session.add(new_user)
+        db.session.commit()
+
+        # Retrieve all users
+        all_users = User.query.all()
+        
+
     return 'Hello, World!'
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     app.run(debug=True)
 
 
