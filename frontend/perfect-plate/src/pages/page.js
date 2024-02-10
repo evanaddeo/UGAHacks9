@@ -4,26 +4,13 @@ import PPLogo from '../../images/PP_logo2.png';
 import ProfilePic from '../../images/profile.png';
 import Link from 'next/link';
 import "../app/globals.css";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <nav>
-          <ul>
-          <Image className={styles.logo} src={PPLogo} alt="PerfectPlate Logo" />
-          <h3>PerfectPlate</h3>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#weekly-glance">Weekly Glance</a></li>
-          <li><a href="#recap">Recap</a></li>
-          <Link href="/login">
-            <Image className={styles.prof} src={ProfilePic} alt="Profile Logo" />
-          </Link>
-
-        </ul>
-        
-      </nav>
+        <NavBar />
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
