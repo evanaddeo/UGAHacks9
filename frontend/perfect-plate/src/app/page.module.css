@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
+  background: linear-gradient(to right, #000000, #34353a);
 }
 
 .description {
@@ -66,12 +67,14 @@
   grid-template-columns: repeat(4, minmax(25%, auto));
   max-width: 100%;
   width: var(--max-width);
+  margin-bottom: 50px;
 }
 
 .card {
+  margin: 5px;
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
+  background: rgba(13, 13, 13, 0.337);
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
 }
@@ -287,11 +290,22 @@
 .weeklySection {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 80px; /* Adjust the margin as needed */
+  margin-top: -95px; /* Adjust the margin as needed */
   width: 80%;
-  background-color: rgba(200, 190, 190, 0.765);
+  height: 200px;
+  background-color: rgba(119, 113, 113, 0.765);
   border-radius: 15px;
   padding: 10px;
+}
+
+.daySection h4 {
+  font-size: 18px;
+}
+
+.daySection p {
+  align-self: flex-start;
+  margin-left: 10px;
+  margin-top: 13px;
 }
 
 .daySection {
@@ -303,12 +317,11 @@
 }
 
 /* Additional styles for better spacing and appearance */
-.weeklySection h4 {
+.daySection h4 {
   margin-bottom: 10px;
 }
 
-.weeklySection p {
-  margin: 5px 0;
+.topText {
+  margin-top: 200px;
 }
-
 

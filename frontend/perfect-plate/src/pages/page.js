@@ -30,6 +30,8 @@ export default function Home() {
         </div>
       </div>
 
+      <h2 className="topText">Example week in meals!</h2>
+
       <div className={styles.weeklySection}>
         <div className={styles.daySection}>
           <h4>Sunday</h4>
