@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from '../app/login.css'; 
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Login() {
@@ -8,6 +7,10 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [incorrectMessage, setIncorrectMessage] = useState('');
+
+  const routRegistration = () => {
+    router.push('/registration');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +65,7 @@ export default function Login() {
       <div className="register-link">
         <p>
           Don't have an account?{' '}
-          <a href="/registration">Register here</a>
+          <a href="/registration" onClick={routRegistration}>Register here</a>
         </p>
       </div>
     </div>
