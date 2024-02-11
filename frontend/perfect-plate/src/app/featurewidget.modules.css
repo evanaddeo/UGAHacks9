@@ -1,0 +1,26 @@
+/* featurewidget.css */
+
+.featureWidget {
+    display: flex;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.title {
+    flex: 1;
+    padding: 20px;
+    background-color: #679bd2;
+    color: #fff;
+}
+
+.description {
+    flex: 2;
+    padding: 20px;
+}
+
+.description p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
