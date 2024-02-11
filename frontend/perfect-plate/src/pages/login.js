@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../app/login.css'; 
 import { useRouter } from 'next/router';
 import NavBar from '@/components/NavBar';
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const router = useRouter();
@@ -25,6 +26,11 @@ export default function Login() {
       if (matchingUser) {
         console.log('Login successful:', matchingUser);
         setIncorrectMessage('');
+
+        Cookies.set('user_first', matchingUser.firstname);
+        Cookies.set('isLoggedIn', true);
+        Cookies.set('intolerances', matchingUser.intolerances);
+
         router.push('/page');
       } else {
         setIncorrectMessage('Incorrect email or password');
