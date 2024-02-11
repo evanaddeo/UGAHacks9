@@ -5,6 +5,7 @@ import requests
 # extendedIngredients : a list that contains all the ingredients req by recipe
 # analyzedInstructions : a list that contains cooking instructions
 # nutrition : an object that contains detailed nutrition info ab recipe
+
 def get_recipe_details(recipe_id):
     url = "https://api.spoonacular.com/recipes/{}/information".format(recipe_id)
     params = {
@@ -12,7 +13,26 @@ def get_recipe_details(recipe_id):
         "includeNutrition": True
     }
     response = requests.get(url, params=params)
-    return response.json()
+    data = response.json()
+
+    print("API Response:", data)  # Add this line for debugging
+
+    # Check if 'id' key exists in the response
+    if 'id' in data:
+        result = data  # Since you are getting information directly for a single recipe
+        meal_data = {
+            'title': result.get('title', ''),
+            'id': result.get('id', ''),
+            'ingredients': result.get('extendedIngredients', ''),
+            'instructions': result.get('analyzedInstructions', ''),
+            'nutrition': result.get('nutrition', ''),
+        }
+        return meal_data
+    else:
+        return {'error': 'No results found'}
+
+
+
 
 
 # Include "breakfast", "lunch", or "dinner" as input
@@ -30,4 +50,13 @@ def get_meal_recipes(meal_type, intolerances):
         "instructionsRequired": True
     }
     response = requests.get(url, params=params)
-    return response.json()
+    data = response.json()
+
+    meal_data = []
+    for result in data.get('results', []):
+        meal_data.append({
+            'title': result.get('title', ''),
+            'id': result.get('id', ''),
+        })
+
+    return meal_data

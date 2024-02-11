@@ -50,6 +50,11 @@ export default function Login() {
       if (response.ok) {
         console.log('User added successfully:', data);
         setIncorrectMessage('');
+
+        Cookies.set('user_first', first);
+        Cookies.set('isLoggedIn', true);
+        Cookies.set('intolerances', intolerances);
+
         router.push('/page');
       } else {
         console.log('Failed to add user:', data.message);
